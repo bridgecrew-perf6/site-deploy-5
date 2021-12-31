@@ -1,0 +1,38 @@
+name: Build Site
+
+concurrency:
+  group: "main"
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add SSH Key
+        run: |
+          eval "$(ssh-agent -s)"
+          mkdir -p ~/.ssh/
+          cat << EOF > ~/.ssh/id_ed25519_a
+          ${{ secrets.SSH_KEY }}
+          EOF
+          sudo chown $USER:$USER ~/.ssh/id_ed25519_a
+          sudo chmod 600 ~/.ssh/id_ed25519_a
+          ssh-add ~/.ssh/id_ed25519_a
+          cat << EOF > ~/.ssh/config
+          Host github.com
+          User git
+          Port 22
+          Hostname github.com
+          IdentityFile ~/.ssh/id_ed25519_a
+          TCPKeepAlive yes
+          IdentitiesOnly yes
+          EOF
+      - name: Clone & Run
+        run: |
+          git clone git@github.com:sjws-sp/site-src.git
+          cd site-src
+          chmod +x deploy
+          bash ./deploy
