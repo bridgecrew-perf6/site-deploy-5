@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-pages-contact-js",
+    "path": "/pl/contact/",
+    "result": {"data":{"locales":{"edges":[{"node":{"ns":"contact","data":"{\"contact-info\":\"Informacje kontaktowe\"}","language":"pl"}},{"node":{"ns":"header","data":"{\"Home\":\"Główna\",\"Blog\":\"Blog\",\"Contact\":\"Kontakt\"}","language":"pl"}}]},"site":{"siteMetadata":{"social":{"email":"bob@gmail.com"}}}},"pageContext":{"language":"pl","i18n":{"language":"pl","languages":["en","pl"],"defaultLanguage":"en","generateDefaultLanguagePage":false,"routed":true,"originalPath":"/contact/","path":"pl/contact/"}}},
+    "staticQueryHashes": ["2241303352","3159585216"]}

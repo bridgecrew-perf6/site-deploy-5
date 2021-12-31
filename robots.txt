@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: http://sjws.ml/sitemap/sitemap-index.xml
+Host: sjws.ml

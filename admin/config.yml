@@ -1,0 +1,63 @@
+backend:
+  name: github
+  repo: sjws-sp/site-src
+  branch: master
+
+publish_mode: editorial_workflow
+
+# media config
+media_folder: "static/media/uploads"
+public_folder: "/media/uploads"
+
+# collections
+collections:
+  - name: 'blog-en'
+    label: 'Blog (English)'
+    folder: 'content/posts/en'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - label: "Tags"
+        name: "tags"
+        collapsed: true
+        allow_add: true
+        widget: "list"
+        field: { label: "Tag", name: "tag", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: 'blog-pl'
+    label: 'Blog (Polski)'
+    folder: 'content/posts/pl'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    create: true
+    fields:
+      - { label: "Tytuł", name: "title", widget: "string" }
+      - { label: "Data", name: "date", widget: "datetime" }
+      - label: "Tagi"
+        name: "tags"
+        collapsed: true
+        allow_add: true
+        widget: "list"
+        field: { label: "Tag", name: "tag", widget: "string" }
+      - { label: "Treść", name: "body", widget: "markdown" }
+  
+  - name: 'metadata'
+    label: "Metadata"
+    extension: "json"
+    editor:
+      preview: false
+    files:
+      - file: "site-metadata.json"
+        label: "Metadata"
+        name: "metadata"
+        fields:
+          - { name: title, label: Ttile, widget: string }
+          - { name: description, label: Description, widget: string }
+          - { name: author, label: Author, widget: string }
+          - name: social
+            label: Socials
+            widget: object
+            fields:
+              - { name: email, label: Email, widget: string }
+              - { name: twitter, label: Twitter, widget: string }
